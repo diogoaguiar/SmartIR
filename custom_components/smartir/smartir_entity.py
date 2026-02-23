@@ -29,7 +29,7 @@ CONF_POWER_SENSOR_RESTORE_STATE = "power_sensor_restore_state"
 PLATFORM_SCHEMA = PLATFORM_SCHEMA.extend(
     {
         vol.Optional(CONF_UNIQUE_ID): cv.string,
-        vol.Required(CONF_DEVICE_CODE): cv.positive_int,
+        vol.Required(CONF_DEVICE_CODE): vol.Any(cv.positive_int, cv.string),
         vol.Required(CONF_CONTROLLER_DATA): get_controller_schema(vol, cv),
         vol.Optional(CONF_DELAY, default=DEFAULT_DELAY): cv.positive_float,
         vol.Optional(CONF_POWER_SENSOR): cv.entity_id,
